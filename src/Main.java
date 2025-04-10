@@ -1,5 +1,7 @@
 
 import abb.ABB;
+import abb.Nodo;
+import lista.ListaImp;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -16,8 +18,19 @@ public class Main {
         abb.agregar(15);
         abb.agregar(21);
 
+        ListaImp<Integer> listaCreciente = abb.aplanarCreciente();
+        ListaImp<Integer> listaDecreciente = abb.aplanarDecreciente();
 
-        abb.mostrarDecreciente();
+        for(int dato: listaCreciente){
+            System.out.print(dato);
+        }
+        System.out.println();
+
+        for(int dato: listaDecreciente){
+            System.out.print(dato);
+        }
+
+
 
     }
 }

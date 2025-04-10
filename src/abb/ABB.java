@@ -1,5 +1,10 @@
 package abb;
 
+import lista.ListaImp;
+
+import java.util.ArrayList;
+
+@SuppressWarnings("ALL")
 public class ABB<T extends Comparable<T>> {
 
     private Nodo<T> raiz;
@@ -45,6 +50,7 @@ public class ABB<T extends Comparable<T>> {
         }
     }
 
+
     public void mostrarCreciente(){
         mostrarCrecienteRec(this.raiz);
     }
@@ -68,5 +74,34 @@ public class ABB<T extends Comparable<T>> {
             mostrarDecrecienteRec(nodo.getIzq());
         }
     }
+
+    public ListaImp<T>  aplanarCreciente(){
+        ListaImp<T>  lista = new ListaImp<T>();
+        aplanarRecCrec(raiz, lista);
+        return lista;
+    }
+
+    private void aplanarRecCrec(Nodo<T> nodo, ListaImp<T> listaAux){
+        if(nodo != null) {
+            aplanarRecCrec(nodo.getDer(), listaAux);
+            listaAux.insertar(nodo.getDato());
+            aplanarRecCrec(nodo.getIzq(), listaAux);
+        }
+    }
+
+    public ListaImp<T>  aplanarDecreciente(){
+        ListaImp<T>  lista = new ListaImp<T>();
+        aplanarRecDecrec(raiz, lista);
+        return lista;
+    }
+
+    private void aplanarRecDecrec(Nodo<T> nodo, ListaImp<T> listaAux){
+        if(nodo != null) {
+            aplanarRecDecrec(nodo.getIzq(), listaAux);
+            listaAux.insertar(nodo.getDato());
+            aplanarRecDecrec(nodo.getDer(), listaAux);
+        }
+    }
+
 
 }
